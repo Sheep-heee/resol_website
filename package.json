@@ -1,0 +1,18 @@
+{
+  "name": "twentytwentyfour-resol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sass --watch assets/scss:assets/build --style=expanded",
+    "build": "sass assets/scss:assets/build --style=compressed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}
