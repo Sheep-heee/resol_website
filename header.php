@@ -8,10 +8,21 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <header class="site-header">
-    <?php if (function_exists('the_custom_logo')) the_custom_logo(); ?>
-    <nav class="site-nav">
-      <?php wp_nav_menu(['theme_location' => 'primary', 'container' => false]); ?>
-    </nav>
+  <header>
+    <div class="inner head_con">
+      <div class="logo">
+        <img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/resol_logo.svg' ) ); ?>" alt="resolvisual logo">
+      </div>
+      <nav class="t_menu">
+        <ul class="me_list">
+          <li class="nav_btn"><a href="/blog">블로그</a></li>
+          <li class="nav_btn"><a href="/works">포트폴리오</a></li>
+          <li class="nav_btn"><a href="/contact">협업문의</a></li>
+          <li class="lang_btn">
+            <button type="button"><div class="flag"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/flag/south_korea.svg' ) ); ?>" alt=""></div>KOR</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main class="site-main">
+  <main>

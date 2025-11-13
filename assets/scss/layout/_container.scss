@@ -1,0 +1,11 @@
+.inner {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1130px) {
+  .inner {
+    width: 100%;
+    margin: 0;
+  }
+}

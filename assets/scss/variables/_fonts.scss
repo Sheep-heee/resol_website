@@ -1,0 +1,25 @@
+@use "paths" as *;
+
+@font-face {
+  font-family: "KoddiUDOnGothic";
+  src: url("#{$font-path}/KoddiUDOnGothic-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "KoddiUDOnGothic";
+  src: url("#{$font-path}/KoddiUDOnGothic-ExtraBold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Onest";
+  src: url("#{$font-path}/Onest-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Onest";
+  src: url("#{$font-path}/Onest-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
