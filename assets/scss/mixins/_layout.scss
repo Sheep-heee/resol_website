@@ -1,6 +1,12 @@
+@use "../variables" as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+@mixin flex-align-center {
+  display: flex;
   align-items: center;
 }
 
@@ -35,4 +41,27 @@
 @mixin grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+@mixin w100-h100 {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin pc-content-down {
+  @media screen and (max-width: $pc-contents) {
+    @content;
+  }
+}
+
+@mixin tb-down {
+  @media screen and (max-width: $bp-tb) {
+    @content;
+  }
+}
+
+@mixin mo-down {
+  @media screen and (max-width: $bp-mo) {
+    @content;
+  }
 }

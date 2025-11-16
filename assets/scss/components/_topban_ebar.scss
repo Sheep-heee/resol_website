@@ -1,0 +1,66 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.topban {
+  height: 328px;
+  @include flex-align-center;
+  position: relative;
+  overflow: hidden;
+  .title_area {
+    @include flex-column;
+    gap: $spacing-8;
+    .t_desc {
+      @include flex-column;
+      line-height: 1.5;
+      .f_line {
+        display: flex;
+        @include tb-down {
+          display: block;
+        }
+      }
+    }
+  }
+  .illust_area {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    &.blog {
+      bottom: 4px;
+      right: -52px;
+    }
+    &.works {
+      bottom: -66px;
+      right: -49px;
+    }
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+.exp_bar {
+  @include flex-between-center;
+  padding: $spacing-24 0;
+  .tab_bar {
+    @include flex-align-center;
+    gap: $spacing-8;
+    .tab_btn {
+      display: block;
+      padding: 0.625rem $spacing-32;
+      text-transform: capitalize;
+      font-weight: 700;
+      border: 1px solid $gray1;
+      border-radius: 99rem;
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.4s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      &.active {
+        color: $bg-gray;
+        background-color: $black;
+        border: 1px solid $black;
+      }
+    }
+  }
+}

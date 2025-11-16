@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 *,
 *::before,
 *::after {
@@ -19,8 +21,22 @@ body {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
+  color: $black;
   word-break: keep-all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: -0.08em;
 }
 
 ul,
