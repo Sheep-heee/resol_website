@@ -27,5 +27,9 @@ footer {
         }
       }
     }
+    a {
+      transition: color 0.4s ease;
+      @include text-hover-ashblue;
+    }
   }
 }
