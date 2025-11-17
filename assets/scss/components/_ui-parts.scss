@@ -1,0 +1,54 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+form.search-form {
+  width: 100%;
+  @include round-box;
+  border: 1px solid $ashBlue;
+  padding: $spacing-8 $spacing-16;
+  overflow: hidden;
+  &:has(.search_input:focus) {
+    outline: 2px solid $ashBlue;
+  }
+  .search_input_box {
+    width: 100%;
+    height: $spacing-16;
+    @include flex-between-center;
+    .search_input {
+      @include w100-h100;
+      flex: 1;
+      font-size: 0.875rem;
+      &:not(:placeholder-shown) ~ .func_btn > .clear_btn {
+        display: flex;
+        cursor: pointer;
+      }
+    }
+    .func_btn {
+      @include flex-align-center;
+      gap: $spacing-4;
+      .clear_btn {
+        width: 0.875rem;
+        height: 0.875rem;
+        @include flex-center;
+        @include circle-box;
+        background-color: $gray1;
+        display: none;
+        cursor: default;
+        .icon-close {
+          width: $spacing-8;
+          height: $spacing-8;
+          color: $white;
+        }
+      }
+      .search_submit {
+        width: $spacing-16;
+        height: $spacing-16;
+        cursor: pointer;
+        @include flex-center;
+        .icon-search {
+          color: $ashBlue;
+        }
+      }
+    }
+  }
+}

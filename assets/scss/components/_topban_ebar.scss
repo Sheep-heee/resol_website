@@ -50,7 +50,7 @@
       text-transform: capitalize;
       font-weight: 700;
       border: 1px solid $gray1;
-      border-radius: 99rem;
+      @include round-box;
       background-color: rgba(0, 0, 0, 0);
       transition: background-color 0.4s ease;
       &:hover {
@@ -62,5 +62,8 @@
         border: 1px solid $black;
       }
     }
+  }
+  .se_container {
+    width: 18.75rem;
   }
 }

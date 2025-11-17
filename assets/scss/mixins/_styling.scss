@@ -1,5 +1,13 @@
 @use "../variables" as *;
 
+@mixin round-box {
+  border-radius: 99rem;
+}
+
+@mixin circle-box {
+  border-radius: 50%;
+}
+
 @mixin text-hover-ashblue {
   &:hover {
     color: $ashBlue;

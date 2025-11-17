@@ -31,7 +31,9 @@ if ($root instanceof WP_Term) {
   </div>
   <div class="se_container">
     <?php
-    get_template_part('components/search-bar', null);
+    get_template_part('components/search-bar', null, [
+      'location' => 'ebar'
+    ]);
     ?>
   </div>
 </nav>

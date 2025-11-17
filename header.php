@@ -8,6 +8,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+  <?php echo file_get_contents(get_stylesheet_directory() . '/assets/img/icon/sprite.svg'); ?>
   <header>
     <div class="inner head_con">
       <div class="logo">
