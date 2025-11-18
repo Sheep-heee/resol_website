@@ -61,6 +61,7 @@ $grid_query = new WP_Query($query_args);
     id="js-load-more-posts"
     class="btn-load-more"
     data-offset="<?php echo esc_attr($initial_count); ?>"
+    data-root-key="<?php echo esc_attr($root_key); ?>"
     data-per-page="<?php echo esc_attr($per_page_more); ?>"
     data-term-id="<?php echo esc_attr($selected_term_id); ?>">
     <span class="arrow_icon">
