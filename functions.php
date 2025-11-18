@@ -62,3 +62,37 @@ function bd_get_category_chain($term = null)
 
   return $chain;
 }
+
+
+function time_diff($post_id = null)
+{
+  $post_id = $post_id ?: get_the_ID();
+
+  $post_time = get_post_time('U', true, $post_id);
+  $now = current_time('timestamp');
+
+  $diff = $now - $post_time;
+
+  if ($diff < 60) {
+    return '방금 전';
+  }
+
+  if ($diff < HOUR_IN_SECONDS) {
+    $mins = floor($diff / MINUTE_IN_SECONDS);
+    return $mins . '분 전';
+  }
+
+  if ($diff < DAY_IN_SECONDS) {
+    $hours = floor($diff / HOUR_IN_SECONDS);
+    return $hours . '시간 전';
+  }
+
+  if ($diff < WEEK_IN_SECONDS) {
+    $days = floor($diff / DAY_IN_SECONDS);
+    return $days . '일 전';
+  }
+
+  if ($diff < 30 * DAY_IN_SECONDS) {
+    return get_the_date('Y.m.d', $post_id);
+  }
+}

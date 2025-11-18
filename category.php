@@ -61,7 +61,7 @@ if ($middle) {
           <?php
           $middle_label = $section === "blog" ? "모든 시리즈" : "모든 분야";
           get_template_part('components/group-label-item', null, [
-            'slug' => $middle->slug,
+            'parent' => $root->slug,
             'label' => $middle_label,
             'count' => $middle->count,
             'url'   => get_category_link($middle->term_id),
@@ -69,7 +69,7 @@ if ($middle) {
           if (! is_wp_error($children) && ! empty($children)) {
             foreach ($children as $child) {
               get_template_part('components/group-label-item', null, [
-                'slug' => $child->slug,
+                'parent' => $middle->slug,
                 'label' => $child->name,
                 'count' => $child->count,
                 'url'   => get_category_link($child->term_id),
@@ -122,13 +122,11 @@ if ($middle) {
   </aside>
   <section class="contents_grid">
     <?php
-    if ($section === 'blog') {
-      get_template_part('parts/grid', 'blog');
-    } elseif ($section === 'works') {
-      get_template_part('parts/grid', 'works');
-    } else {
-      get_template_part('parts/grid', 'notice');
-    }
+    get_template_part('parts/con-grid', null, [
+      'root' => $root->slug === 'notice' ? $root->term_id : $section,
+      'middle' => $middle->term_id,
+      'children' => $children
+    ]);
     ?>
   </section>
 </div>

@@ -1,7 +1,7 @@
 <?php
 $root = $args['root'] ?? null;
 $middle_id = isset($args['middle']) ? (int) $args['middle'] : 0;
-$children = $args['children'] ?? '';
+$children = $args['children'] ?? [];
 
 $middle_terms = [];
 
