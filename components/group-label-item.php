@@ -37,7 +37,8 @@ switch ($label) {
       <svg class="icon-<?php echo esc_attr($icon_name); ?>">
         <use href="#icon-<?php echo esc_attr($icon_name); ?>"></use>
       </svg>
-      <?php echo esc_html($label); ?>
     <?php endif; ?>
+    <?php echo esc_html($label); ?>
+    <span class="post_count">(<?php echo esc_html($count); ?>)</span>
   </a>
 </li>

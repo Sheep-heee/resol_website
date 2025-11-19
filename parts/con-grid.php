@@ -1,5 +1,6 @@
 <?php
 $root_type = $args['root'] ?? '';
+$middle_id = isset($args['middle']) ? (int) $args['middle'] : 0;
 $children = $args['children'] ?? [];
 
 $initial_count = 6;
@@ -11,8 +12,16 @@ $root_key = is_int($root_type) ? 'notice' : (string) $root_type;
 if (is_int($root_type)) {
   $selected_term_id = $root_type;
 } else {
-  $middle_id = isset($args['middle']) ? (int) $args['middle'] : 0;
+  $current_term = get_queried_object();
   $selected_term_id = $middle_id;
+  if (
+    $current_term instanceof WP_Term &&
+    $current_term->taxonomy === 'category' &&
+    $current_term->parent === $middle_id
+  ) {
+    $selected_term_id = (int) $current_term->term_id;
+  }
+
   if ($root_type === 'blog') {
     $initial_count = 7;
   } else {
@@ -21,9 +30,11 @@ if (is_int($root_type)) {
 }
 
 $query_args = [
-  'post_type' => 'post',
+  'post_type'      => 'post',
   'posts_per_page' => $initial_count,
-  'post_status' => 'publish',
+  'post_status'    => 'publish',
+  'orderby'        => 'date',
+  'order'          => 'DESC',
 ];
 
 if ($selected_term_id) {
@@ -69,7 +80,6 @@ $grid_query = new WP_Query($query_args);
         <use href="#icon-downArrow"></use>
       </svg>
     </span>
-    <?php echo $root_type === 'works' ? '작업물 ' : '글 ' ?>
-    <?php echo esc_html($per_page_more); ?>개 더보기
+    <?php echo $root_type === 'works' ? '작업물 ' : '글 ' ?>더 보기
   </button>
 </div>

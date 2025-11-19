@@ -60,10 +60,18 @@ if ($middle) {
         <ul class="item_wrpper category">
           <?php
           $middle_label = $section === "blog" ? "모든 시리즈" : "모든 분야";
+          $middle_count = 0;
+
+          if (!is_wp_error($children) && !empty($children)) {
+            foreach ($children as $child) {
+              $middle_count += (int) $child->count;
+            }
+          }
+
           get_template_part('components/group-label-item', null, [
             'parent' => $root->slug,
             'label' => $middle_label,
-            'count' => $middle->count,
+            'count' => $middle_count,
             'url'   => get_category_link($middle->term_id),
           ]);
           if (! is_wp_error($children) && ! empty($children)) {
@@ -104,12 +112,7 @@ if ($middle) {
             <?php while ($notice_query->have_posts()) : $notice_query->the_post(); ?>
               <?php get_template_part(
                 'components/notice-item',
-                null,
-                [
-                  'title'     => get_the_title(),
-                  'permalink' => get_permalink(),
-                  'date'      => get_the_date('Y. m. d'),
-                ]
+                null
               ); ?>
             <?php endwhile; ?>
           <?php else : ?>

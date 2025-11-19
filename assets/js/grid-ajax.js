@@ -8,12 +8,15 @@ buttons.forEach((btn) => {
     isLoading = true;
 
     const rootKey = btn.dataset.rootKey;
+    const grid = document.getElementById(`js-${rootKey}-grid`);
+    if (!grid) {
+      isLoading = false;
+      return;
+    }
+
     const offset = parseInt(btn.dataset.offset) || 0;
     const perPage = parseInt(btn.dataset.perPage) || 6;
     const termId = parseInt(btn.dataset.termId) || 0;
-
-    const grid = document.getElementById(`js-${rootKey}-grid`);
-    if (!grid) return;
 
     const formData = new FormData();
     formData.append("action", "resol_load_more_posts");
@@ -30,7 +33,7 @@ buttons.forEach((btn) => {
       });
 
       const data = await res.json();
-      if (!data.success) {
+      if (!data || !data.success) {
         console.warn("Load more error", data);
         return;
       }
@@ -49,7 +52,8 @@ buttons.forEach((btn) => {
         btn.dataset.offset = offset + perPage;
       }
 
-      if (!hasMore || html.trim() === "") {
+      if (!hasMore || !html.trim()) {
+        btn.disabled = true;
         btn.style.display = "none";
       }
     } catch (err) {
