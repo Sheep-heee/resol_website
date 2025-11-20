@@ -6,13 +6,35 @@ add_action('wp_enqueue_scripts', function () {
     [],
     filemtime(get_stylesheet_directory() . '/assets/build/style.css')
   );
+  // wp_enqueue_script(
+  //   'search-clear',
+  //   get_stylesheet_directory_uri() . '/assets/js/search-clear.js',
+  //   array(),
+  //   filemtime(get_stylesheet_directory() . '/assets/js/search-clear.js'),
+  //   true
+  // );
   wp_enqueue_script(
-    'search-clear',
-    get_stylesheet_directory_uri() . '/assets/js/search-clear.js',
+    'random-menu',
+    get_stylesheet_directory_uri() . '/assets/js/random-menu.js',
     array(),
-    filemtime(get_stylesheet_directory() . '/assets/js/search-clear.js'),
+    filemtime(get_stylesheet_directory() . '/assets/js/random-menu.js'),
     true
   );
+
+  $path = get_stylesheet_directory() . '/assets/data/random-menus.json';
+  $menu_list = [];
+
+  if (file_exists($path) && is_readable($path)) {
+    $json = file_get_contents($path);
+    $decoded = json_decode($json, true);
+    if (is_array($decoded)) {
+      $menu_list = $decoded;
+    }
+  }
+
+  wp_localize_script('random-menu', 'RESOL_RANDOM_MENU', array(
+    'menus' => $menu_list,
+  ));
   wp_enqueue_script(
     'grid-ajax',
     get_stylesheet_directory_uri() . '/assets/js/grid-ajax.js',

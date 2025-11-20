@@ -11,13 +11,13 @@
   <?php echo file_get_contents(get_stylesheet_directory() . '/assets/img/icon/sprite.svg'); ?>
   <header>
     <div class="inner head_con">
-      <div class="logo">
-        <img src="<?php echo esc_url(get_theme_file_uri('assets/img/resol_logo.svg')); ?>" alt="resolvisual logo">
-      </div>
+      <a href="/" class="logo">
+        <img src="<?php echo esc_url(get_theme_file_uri('assets/img/resol_logo.svg')); ?>" alt="revisual logo">
+      </a>
       <nav class="t_menu">
         <ul class="me_list">
-          <li class="nav_btn"><a href="/category/blog/design-b">블로그</a></li>
           <li class="nav_btn"><a href="/category/works/design-w">포트폴리오</a></li>
+          <li class="nav_btn"><a href="/category/blog/design-b">블로그</a></li>
           <li class="nav_btn"><a href="/contact">협업문의</a></li>
         </ul>
         <button type="button">

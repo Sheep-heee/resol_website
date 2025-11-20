@@ -29,11 +29,16 @@ if ($root instanceof WP_Term) {
       <?php endforeach; ?>
     <?php endif; ?>
   </div>
-  <div class="se_container">
+  <!-- <div class="se_container">
     <?php
-    get_template_part('components/search-bar', null, [
-      'location' => 'ebar'
-    ]);
+    //get_template_part('components/search-bar', null, [
+    //  'location' => 'ebar'
+    //]);
+    ?>
+  </div> -->
+  <div class="wid_container">
+    <?php
+    get_template_part('components/ran-menu-widget', null);
     ?>
   </div>
 </nav>
